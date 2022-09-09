@@ -2,12 +2,19 @@ version: "3"
 
 services:
   db:
-    build: ./db
+    image: mysql
     ports:
       - '3308:3306'
     volumes:
       - ./data/mysql:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: appDB
   server:
     build: ./server
     ports:
-      - '8003:80'
+      - '8080:80'
