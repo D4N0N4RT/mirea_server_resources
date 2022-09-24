@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index page</title>
+    </head>
+    <body>
+        <label for="task1">Введите параметр отрисовки фигуры</label>
+        <input
+            id="task1"
+            type="number"/>
+        <button onclick="window.location.replace(
+                `drawer/main_draw.php?encoded=${document.getElementById('task1').value}`
+        )">Задание №1</button>
+        <br>
+        <label for="task2">Введите элементы массива через запятую</label>
+        <input
+            id="task2"
+            type="text"/>
+        <button onclick="window.location.replace(
+                `sorter/main_sort.php?array=${document.getElementById('task2').value}`
+        )">Задание №2</button>
+        <br>
+        <button onclick="window.location.replace('administrator/main_admin.php')">Задание №3</button>
+    </body>
+</html>
