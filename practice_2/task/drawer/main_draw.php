@@ -9,7 +9,7 @@
             include_once 'Drawer.php';
             $parameter = $_GET['encoded'];
 
-            if ($parameter > 0b11111111 || $parameter < 0)
+            if ($parameter > 0b11111111 || $parameter < 0 || !is_numeric($parameter))
                 echo 'Параметром должно быть целое число от 0 до 255';
             else new Drawer($parameter);
         ?>
