@@ -1,0 +1,6 @@
+<Files locations.php>
+    Require all granted
+</Files>
+<Files coffee.php>
+    Require all granted
+</Files>

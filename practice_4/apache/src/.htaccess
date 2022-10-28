@@ -1,0 +1,8 @@
+<Files admin.php>
+    AuthName "Login and Password required"
+    AuthType Basic
+    Require valid-user
+</Files>
+<Files catalogue.php>
+    Require all granted
+</Files>
