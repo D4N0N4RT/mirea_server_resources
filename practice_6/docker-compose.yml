@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    image: mysql
+    ports:
+      - '3308:3306'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - ./db/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: coffeeDb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+  apache:
+    container_name: apache
+    build: ./apache
+    #command: "/bin/sh -c 'apt-get update &&
+    #      pecl uninstall redis &&
+    #      pecl install -f redis &&
+    #      docker-php-ext-enable redis &&
+    #      docker-php-ext-install mysqli &&
+    #      exec apache2-foreground'"
+    volumes:
+      - ./apache/src:/var/www/html
+      - ./apache/php.ini:/usr/local/etc/php/conf.d/php.ini
+    ports:
+      - '8001:80'
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DB: coffeeDB
+    links:
+      - db
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - '8000:8000'
+    links:
+      - db
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - '6379:6379'

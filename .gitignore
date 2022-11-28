@@ -2,4 +2,7 @@ practice_1/data/**
 practice_3/db/data/**
 practice_4/db/data/**
 practice_5/db/data/**
+practice_6/apache/src/jpgraph
+practice_6/apache/src/vendor/**
+practice_6/db/data/**
 **/.idea/

@@ -1,0 +1,5 @@
+Dump:
+  dump{0..59}:
+    month: '<numberBetween(1, 12)>'
+    weekday: '<numberBetween(1, 7)>'
+    monthday: '<numberBetween(1, 30)>'
