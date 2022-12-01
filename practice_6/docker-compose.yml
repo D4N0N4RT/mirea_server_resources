@@ -17,12 +17,6 @@ services:
   apache:
     container_name: apache
     build: ./apache
-    #command: "/bin/sh -c 'apt-get update &&
-    #      pecl uninstall redis &&
-    #      pecl install -f redis &&
-    #      docker-php-ext-enable redis &&
-    #      docker-php-ext-install mysqli &&
-    #      exec apache2-foreground'"
     volumes:
       - ./apache/src:/var/www/html
       - ./apache/php.ini:/usr/local/etc/php/conf.d/php.ini

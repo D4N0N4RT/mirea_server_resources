@@ -27,16 +27,13 @@ function stamp(string $water): GdImage | bool {
 function watermark(string $image) {
 // Load the stamp and the photo to apply the watermark to
     $im = imagecreatefrompng($image);
-    $whitecolor = imagecolorallocate($im, 25, 233, 12);
     $blackcolor = imagecolorallocate($im, 0, 0, 0);
     imagestring($im, 5, 20, 30, 'Copyrights Daniil', $blackcolor);
     header("Content-type: image/png");
     imagepng($im, $image);
+    //imagecopymerge();
 }
 
-//watermark(draw_bar_plot(), stamp("Watermark by Daniil"));
-//watermark((), stamp("Watermark by Daniil"));
-//watermark((), stamp("Watermark by Daniil"));
 
 draw_bar_plot();
 draw_line_plot();
@@ -50,13 +47,13 @@ watermark("images/pie_graph.png");
 <img src="images/line_graph.png" alt="plot_2.png">
 <img src="images/pie_graph.png" alt="plot_3.png">
 
-<table class="table">
+<table class="table" style="width: 100%; text-align: start">
     <tr>
         <th>Name</th>
-        <th>Color</th>
+        <th>Address</th>
         <th>Month</th>
-        <th>Weekday</th>
-        <th>Day of month</th>
+        <th>Most favorite week day</th>
+        <th>Amount of orders</th>
     </tr>
     <?php
     $data = get_data();
@@ -64,10 +61,10 @@ watermark("images/pie_graph.png");
     foreach ($data as $data_row) {
         echo "<tr>";
         echo "<td>".$data_row->name."</td>";
-        echo "<td>".$data_row->color."</td>";
+        echo "<td>".$data_row->address."</td>";
         echo "<td>".$data_row->month."</td>";
         echo "<td>".$data_row->weekday."</td>";
-        echo "<td>".$data_row->day."</td>";
+        echo "<td>".$data_row->orders."</td>";
         echo "</tr>";
     }
     ?>

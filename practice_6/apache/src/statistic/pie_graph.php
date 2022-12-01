@@ -1,7 +1,5 @@
 <?php
-/*
-require_once '/var/www/html/jpgraph/jpgraph.php';
-require_once '/var/www/html/jpgraph/jpgraph_pie.php';*/
+
 require_once 'fixture.php';
 require_once '/var/www/html/vendor/autoload.php';
 
@@ -26,7 +24,7 @@ function draw_pie_plot() : void
 
     $pieplot->SetLabels($labels);
 
-    $graph->title->Set('Birthday day of week graph');
+    $graph->title->Set('Most favorite weekday for order graph');
 
     $graph->Add($pieplot);
 
@@ -36,9 +34,5 @@ function draw_pie_plot() : void
 
     $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
-    $graph->title->Set("Birthday day of week graph");
-
     $graph->Stroke('images/pie_graph.png');
-
-    //return $graph->Stroke('/var/www/html/statistic/images/pie_graph.png');
 }

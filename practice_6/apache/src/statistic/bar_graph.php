@@ -1,7 +1,5 @@
 <?php
 
-/*require_once '/var/www/html/jpgraph/jpgraph.php';
-require_once '/var/www/html/jpgraph/jpgraph_bar.php';*/
 require_once 'fixture.php';
 require_once '/var/www/html/vendor/autoload.php';
 
@@ -33,6 +31,4 @@ function draw_bar_plot(): void
     $graph->Add($barplot);
 
     $graph->Stroke('images/bar_graph.png');
-
-    //return $graph->Stroke('/var/www/html/statistic/images/bar_graph.png');
 }

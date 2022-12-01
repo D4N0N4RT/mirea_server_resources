@@ -3,25 +3,25 @@
 class DataInstance
 {
     public string $name;
-    public string $color;
+    public string $address;
     public string $month;
     public string $weekday;
-    public int $day;
+    public int $orders;
 
     /**
      * @param string $name
-     * @param string $color
+     * @param string $address
      * @param string $month
      * @param string $weekday
-     * @param int $day
+     * @param int $orders
      */
-    public function __construct(string $name, string $color, string $month, string $weekday, int $day)
+    public function __construct(string $name, string $address, string $month, string $weekday, int $orders)
     {
         $this->name = $name;
-        $this->color = $color;
+        $this->address = $address;
         $this->month = $month;
         $this->weekday = $weekday;
-        $this->day = $day;
+        $this->orders = $orders;
     }
 
 

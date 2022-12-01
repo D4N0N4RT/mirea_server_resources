@@ -9,11 +9,11 @@ function generate_data()
 
     $faker = Faker\Factory::create();
     $faker->addProvider(new Faker\Provider\ru_RU\Person($faker));
-    $faker->addProvider(new Faker\Provider\ru_RU\Color($faker));
+    $faker->addProvider(new Faker\Provider\ru_RU\Address($faker));
     for ($i = 0; $i < 50; $i++) {
         $data_row = new DataInstance(
             $faker->name(),
-            $faker->colorName(),
+            $faker->address(),
             $faker->monthName(),
             $faker->dayOfWeek,
             $faker->numberBetween(1,15)
@@ -26,8 +26,6 @@ function generate_data()
 
 
 function get_data() {
-/*    $loader = new Nelmio\Alice\Loader\NativeLoader();
-    $fixtures = $loader->loadFile('./fixtures.yml');*/
     $input = file_get_contents('fixtures.json');
     return json_decode($input);
 }
@@ -58,15 +56,15 @@ function get_month_count(): array {
     return array("keys" => array_keys($month_count), "values" => array_values($month_count));
 }
 
-function get_day_count(): array {
+function get_orders_count(): array {
     $data = get_data();
-    $day_count = array();
+    $order_count = array();
     foreach ($data as $obj) {
-        $day = $obj->day;
-        if (!isset($day_count[$day])) {
-            $day_count[$day] = 0;
+        $orders = $obj->orders;
+        if (!isset($order_count[$orders])) {
+            $order_count[$orders] = 0;
         }
-        $day_count[$day] += 1;
+        $order_count[$orders] += 1;
     }
-    return array("keys" => array_keys($day_count), "values" => array_values($day_count));
+    return array("keys" => array_keys($order_count), "values" => array_values($order_count));
 }
