@@ -45,7 +45,9 @@ $dictionary = $DICTIONARY[$_SESSION['language']];
 <button onclick="window.location.replace(
                 `/admin/admin.php`)">Administrate</button>
 <button onclick="window.location.replace(
-                `/catalogue.php`)">Catalogue</button><br>
+                `/catalogue.php`)">Catalogue</button>
+<button onclick="window.location.replace(
+                `/statistic/statistics.php`)">Statistics</button><br>
 
 <h2><?php echo $dictionary->SETTING ?></h2>
 

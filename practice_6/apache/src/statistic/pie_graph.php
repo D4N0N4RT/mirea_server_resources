@@ -9,13 +9,13 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 
-function draw_pie_plot() : GdImage
+function draw_pie_plot() : void
 {
     $graph_data = get_weekday_count();
     $data = $graph_data["values"];
     $labels = $graph_data["keys"];
 
-    $graph = new Graph\PieGraph(600, 400, 'pieGraph', 10, true);
+    $graph = new Graph\PieGraph(650, 400, 'pieGraph', 10, true);
 
     $pieplot = new Plot\PiePlot($data);
 
@@ -26,11 +26,19 @@ function draw_pie_plot() : GdImage
 
     $pieplot->SetLabels($labels);
 
-    $graph->title->Set('Круговая диаграмма');
+    $graph->title->Set('Birthday day of week graph');
 
     $graph->Add($pieplot);
 
     $graph->SetShadow(4);
 
-    return $graph->Stroke('/var/www/html/statistic/images/pie_graph.png');
+    $graph->SetUserFont(FF_FONT1);
+
+    $graph->title->SetFont(FF_FONT1, FS_BOLD);
+
+    $graph->title->Set("Birthday day of week graph");
+
+    $graph->Stroke('images/pie_graph.png');
+
+    //return $graph->Stroke('/var/www/html/statistic/images/pie_graph.png');
 }

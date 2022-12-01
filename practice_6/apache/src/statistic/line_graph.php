@@ -8,16 +8,17 @@ require_once '/var/www/html/vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-function draw_line_plot() : GdImage
+function draw_line_plot() : void
 {
 
     $graph_data = get_day_count();
     $ydata = $graph_data["values"];
     $xdata = $graph_data["keys"];
 
-    $graph = new Graph\Graph(600, 400, 'lineGraph', 10, true);
+    sort($xdata);
 
-// Указываем, какие оси использовать:
+    $graph = new Graph\Graph(650, 450, 'lineGraph', 10, true);
+
     $graph->SetScale('textlin');
 
 
@@ -27,23 +28,29 @@ function draw_line_plot() : GdImage
 
     $graph->Add($lineplot);
 
-    $graph->title->Set('Линейный график');
+    $graph->title->Set('Birthday day of month graph');
 
     $graph->title->SetFont(FF_ARIAL, FS_NORMAL);
     $graph->xaxis->title->SetFont(FF_VERDANA, FS_ITALIC);
     $graph->yaxis->title->SetFont(FF_TIMES, FS_BOLD);
 
-    $graph->xaxis->title->Set('Ось x');
-    $graph->yaxis->title->Set('Ось y');
+    $graph->xaxis->title->Set('Day of month');
+    $graph->yaxis->title->Set('Birthdays amount');
 
     $graph->xaxis->SetColor('#СС0000');
     $graph->yaxis->SetColor('#СС0000');
 
-    $lineplot->SetWeight(2);
+    $lineplot->SetWeight(1);
 
     $lineplot->value->Show();
 
-    $graph->SetShadow(4);
+    $graph->SetShadow(2);
 
-    return $graph->Stroke('/var/www/html/statistic/images/line_graph.png');
+    $graph->title->Set("Birthday day of month graph");
+
+    $graph->title->SetFont(FF_FONT1, FS_BOLD);
+
+    $graph->Stroke('images/line_graph.png');
+
+    //return $graph->Stroke('/var/www/html/statistic/images/line_graph.png');
 }

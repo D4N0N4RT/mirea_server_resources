@@ -31,7 +31,7 @@
 <button onclick="window.location.replace(
                 `/admin/settings.php`)">Settings</button>
 <button onclick="window.location.replace(
-                `/statistics.php`)">Statistics</button><br>
+                `/statistic/statistics.php`)">Statistics</button><br>
 <h1>Catalogue</h1>
 <table>
     <tr><th>Title</th><th>Volume (L)</th><th>Price (Rub)</th></tr>

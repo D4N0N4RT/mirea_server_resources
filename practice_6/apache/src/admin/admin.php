@@ -38,7 +38,7 @@ $dictionary = $DICTIONARY[$_COOKIE['language']];
 <button onclick="window.location.replace(
                 `/catalogue.php`)">Catalogue</button>
 <button onclick="window.location.replace(
-                `/statistics.php`)">Statistics</button><br>
+                `/statistic/statistics.php`)">Statistics</button><br>
 
 <div style="display: flex; flex-flow: column nowrap; justify-content: center; align-items: center; border: 2px solid black">
     <h1 style="display: flex; flex-flow: column nowrap; justify-content: center; align-items: center;">

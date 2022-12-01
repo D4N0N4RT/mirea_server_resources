@@ -15,24 +15,14 @@ function generate_data()
             $faker->name(),
             $faker->colorName(),
             $faker->monthName(),
-            $faker->numberBetween(1,7)
+            $faker->dayOfWeek,
+            $faker->numberBetween(1,15)
         );
         $data[] = $data_row;
     }
     $jsonData = json_encode($data);
     file_put_contents('fixtures.json', $jsonData);
 }
-
-
-/*require '../vendor/autoload.php';
-use Nelmio\Alice\Loader\NativeLoader;
-
-
-class Dump {
-    public $month;
-    public $weekday;
-    public $monthday;
-}*/
 
 
 function get_data() {
@@ -46,7 +36,7 @@ function get_weekday_count(): array {
     $data = get_data();
     $weekday_count = array();
     foreach ($data as $obj) {
-        $weekday = $obj->color;
+        $weekday = $obj->weekday;
         if (!isset($weekday_count[$weekday])) {
             $weekday_count[$weekday] = 0;
         }
@@ -72,7 +62,7 @@ function get_day_count(): array {
     $data = get_data();
     $day_count = array();
     foreach ($data as $obj) {
-        $day = $obj->weekday;
+        $day = $obj->day;
         if (!isset($day_count[$day])) {
             $day_count[$day] = 0;
         }
